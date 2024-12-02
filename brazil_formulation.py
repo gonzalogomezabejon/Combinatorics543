@@ -27,7 +27,7 @@ class Brazil_Formulation():
 		self.modelvars = {}
 		for ii in self.graph_G.nodes:
 			for kk in self.graph_H.nodes:
-				self.modelvars['y_%d_%d'%(ii, kk)] = model.addVar(name = 'y_%d_%d'%(ii, kk), lb=0)
+				self.modelvars['y_%d_%d'%(ii, kk)] = model.addVar(name = 'y_%d_%d'%(ii, kk), lb=0, vtype = GRB.BINARY)
 		for ii, jj in self.graph_G.edges:
 			for kk, ll in self.graph_H.edges:
 				self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] = model.addVar(name = 'c_%d_%d_%d_%d'%(ii,jj,kk,ll), lb=0)
@@ -56,13 +56,12 @@ class Brazil_Formulation():
 					<= self.modelvars['y_%d_%d'%(node, kk)] + self.modelvars['y_%d_%d'%(node, ll)])
 		model.setObjective(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk,ll in self.graph_H.edges)
 			for ii,jj in self.graph_G.edges), GRB.MAXIMIZE)
+		model.optimize()
 
 
 
 if __name__ == '__main__':
-	g1, g2 = graph.generate_random_graph(10, 25), graph.generate_random_graph(10, 25)
+	g1, g2 = graph.generate_random_graph(25, 40), graph.generate_random_graph(25, 55)
 	form = Brazil_Formulation(g1, g2)
 	form.solve_IP_formulation()
-
-
 
