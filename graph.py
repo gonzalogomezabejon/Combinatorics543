@@ -18,6 +18,29 @@ class Graph:
 	def find_triangles(self):
 		pass
 
+def read_test_case(filename):
+	with open(filename, 'r') as f:
+		lines = f.read().split('\n')
+	n = int(lines[0].strip())
+	edges1 = []
+	edges2 = []
+	for ii in range(n):
+		degree, neighbors = lines[1+ii].split('\t')
+		for vv in neighbors.strip().split(' '):
+			if int(vv) > ii:
+				edges1.append((ii, int(vv)))
+			if int(vv) < ii:
+				assert (int(vv), ii) in edges1
+	for ii in range(n):
+		degree, neighbors = lines[1+n+ii].split('\t')
+		for vv in neighbors.strip().split(' '):
+			if int(vv) > ii:
+				edges2.append((ii, int(vv)))
+			if int(vv) < ii:
+				assert (int(vv), ii) in edges2
+	graph1 = Graph(range(n), edges1)
+	graph2 = Graph(range(n), edges2)
+	return graph1, graph2
 
 def generate_random_graph(n_nodes, m_edges):
 	# Do not use for dense graphs (m > n²/4)
@@ -29,7 +52,12 @@ def generate_random_graph(n_nodes, m_edges):
 			edges.append(new_edge)
 	return Graph(nodes, edges)
 
+
+
 if __name__ == '__main__':
 	test = generate_random_graph(5, 10)
 	print (test.nodes)
 	print (test.edges)
+	g1, g2 = read_test_case('instances/marenco/df1.dat')
+	print (g1.edges)
+	print (g2.edges)

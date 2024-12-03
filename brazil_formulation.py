@@ -21,7 +21,7 @@ class Brazil_Formulation():
 		self.graph_H = graph_H
 		self.model = None
 
-	def solve_IP_formulation(self):
+	def setup_IP_formulation(self):
 		model = gp.Model("MCES_formulation_2", env=my_env)
 		# Variables
 		self.modelvars = {}
@@ -33,35 +33,58 @@ class Brazil_Formulation():
 				self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] = model.addVar(name = 'c_%d_%d_%d_%d'%(ii,jj,kk,ll), lb=0)
 		# Constraints
 		for ii in self.graph_G.nodes:
-			model.addConstr(sum(self.modelvars['y_%d_%d'%(ii, kk)] for kk in self.graph_H.nodes) <= 1)
+			model.addConstr(gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for kk in self.graph_H.nodes) <= 1)
 		for kk in self.graph_H.nodes:
-			model.addConstr(sum(self.modelvars['y_%d_%d'%(ii, kk)] for ii in self.graph_G.nodes) <= 1)
+			model.addConstr(gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for ii in self.graph_G.nodes) <= 1)
 		for ii, jj in self.graph_G.edges:
-			model.addConstr(sum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk, ll in self.graph_H.edges)
-				<= sum(self.modelvars['y_%d_%d'%(ii, kk)] for kk in self.graph_H.nodes))
-			model.addConstr(sum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk, ll in self.graph_H.edges)
-				<= sum(self.modelvars['y_%d_%d'%(jj, kk)] for kk in self.graph_H.nodes))
+			model.addConstr(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk, ll in self.graph_H.edges)
+				<= gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for kk in self.graph_H.nodes))
+			model.addConstr(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk, ll in self.graph_H.edges)
+				<= gp.quicksum(self.modelvars['y_%d_%d'%(jj, kk)] for kk in self.graph_H.nodes))
 		for kk, ll in self.graph_H.edges:
-			model.addConstr(sum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for ii, jj in self.graph_G.edges)
-				<= sum(self.modelvars['y_%d_%d'%(ii, kk)] for ii in self.graph_G.nodes))
-			model.addConstr(sum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for ii, jj in self.graph_G.edges)
-				<= sum(self.modelvars['y_%d_%d'%(ii, ll)] for ii in self.graph_G.nodes))
+			model.addConstr(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for ii, jj in self.graph_G.edges)
+				<= gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for ii in self.graph_G.nodes))
+			model.addConstr(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for ii, jj in self.graph_G.edges)
+				<= gp.quicksum(self.modelvars['y_%d_%d'%(ii, ll)] for ii in self.graph_G.nodes))
 		for ii, jj in self.graph_G.edges:
 			for node in self.graph_H.nodes:
-				model.addConstr(sum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk,ll in self.graph_H.delta[node])
+				model.addConstr(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk,ll in self.graph_H.delta[node])
 					<= self.modelvars['y_%d_%d'%(ii, node)] + self.modelvars['y_%d_%d'%(jj, node)])
 		for kk, ll in self.graph_H.edges:
 			for node in self.graph_G.nodes:
-				model.addConstr(sum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for ii,jj in self.graph_G.delta[node])
+				model.addConstr(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for ii,jj in self.graph_G.delta[node])
 					<= self.modelvars['y_%d_%d'%(node, kk)] + self.modelvars['y_%d_%d'%(node, ll)])
 		model.setObjective(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk,ll in self.graph_H.edges)
 			for ii,jj in self.graph_G.edges), GRB.MAXIMIZE)
-		model.optimize()
+		self.model = model
+
+	def solve_model(self):
+		self.model.optimize()
+		if self.model.status == GRB.OPTIMAL:
+			answer = self.model.objVal
+
+	def add_constraints_33_34(self):
+		# Adds constraints 33 & 34 for the special case I=N(i), K=N(k) if they are facet-defining
+		for i in self.graph_G.nodes:
+			for k in self.graph_H.nodes:
+				i_neighbors = len(self.graph_G.delta[i])
+				k_neighbors = len(self.graph_H.delta[k])
+				if 1 < i_neighbors < k_neighbors:
+					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
+						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
+						i_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(i, p)] for p in graph_H.neighbors[k]))
+				if 1 < k_neighbors < i_neighbors:
+					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
+						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
+						k_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(p, k)] for p in graph_G.neighbors[i]))
 
 
 
 if __name__ == '__main__':
-	g1, g2 = graph.generate_random_graph(25, 40), graph.generate_random_graph(25, 55)
+	# g1, g2 = graph.generate_random_graph(25, 40), graph.generate_random_graph(25, 55)
+	g1, g2 = graph.read_test_case('instances/marenco/df1.dat')
 	form = Brazil_Formulation(g1, g2)
-	form.solve_IP_formulation()
+	form.setup_IP_formulation()
+	form.solve_model()
+
 
