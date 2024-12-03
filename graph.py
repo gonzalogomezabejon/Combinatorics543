@@ -4,8 +4,13 @@ import random
 
 class Graph:
 	def __init__(self, nodes, edges):
-		# nodes: List of nodes, e.g. [1,2, 'A', '*']
-		# edges: List of edges, e.g. [(1,2), (1, 'A'), ('A', '*')]
+		# nodes: List of nodes in numerical format, 0-indexed
+		# edges: List of edges in numerical format, 0-indexed. e.g. [(0, 1), (1, 2)]
+		assert nodes == list(range(len(nodes)))
+		for v, w in edges:
+			assert v < len(nodes)
+			assert w < len(nodes)
+
 		self.nodes = nodes
 		self.edges = edges
 		self.neighbors = {node: [] for node in nodes}
