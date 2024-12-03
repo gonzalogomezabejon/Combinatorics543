@@ -8,6 +8,7 @@ import json
 import math
 from matplotlib import pyplot as plt
 import graph
+import threading
 
 # Second formulation in the paper (variables y & c)
 
@@ -58,10 +59,27 @@ class Brazil_Formulation():
 			for ii,jj in self.graph_G.edges), GRB.MAXIMIZE)
 		self.model = model
 
-	def solve_model(self):
-		self.model.optimize()
+	def solve_model(self, time_limit = 300):
+		thread1 = threading.Thread(target = self.model.optimize)
+		end_time = time.time() + time_limit
+		thread1.start()
+		running = True
+		while thread1.is_alive():
+			if time.time() > end_time and running:
+				self.model.terminate()
+				running = False
+			time.sleep(0.1)
+		final_time = time.time() - end_time + time_limit
+
 		if self.model.status == GRB.OPTIMAL:
 			answer = self.model.objVal
+			return (True, answer, final_time)
+		if self.model.status == GRB.INTERRUPTED:
+			answer = self.model.objVal
+			bound = self.model.objBound
+			print ('Stopped after %.2f seconds'%final_time)
+			return (False, answer, bound)
+
 
 	def add_constraints_33_34(self):
 		# Adds constraints 33 & 34 for the special case I=N(i), K=N(k) if they are facet-defining
@@ -82,9 +100,10 @@ class Brazil_Formulation():
 
 if __name__ == '__main__':
 	# g1, g2 = graph.generate_random_graph(25, 40), graph.generate_random_graph(25, 55)
-	g1, g2 = graph.read_test_case('instances/marenco/df1.dat')
+	g1, g2 = graph.read_test_case('instances/marenco/df8.dat')
 	form = Brazil_Formulation(g1, g2)
 	form.setup_IP_formulation()
-	form.solve_model()
+	aux = form.solve_model(time_limit=1200)
+	print (aux)
 
 

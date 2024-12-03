@@ -10,7 +10,7 @@ class Graph:
 		for v, w in edges:
 			assert v < len(nodes)
 			assert w < len(nodes)
-
+		
 		self.nodes = nodes
 		self.edges = edges
 		self.neighbors = {node: [] for node in nodes}
@@ -30,12 +30,19 @@ def read_test_case(filename):
 	edges1 = []
 	edges2 = []
 	for ii in range(n):
+		if lines[1+ii][0] == '0':
+			continue
 		degree, neighbors = lines[1+ii].split('\t')
 		for vv in neighbors.strip().split(' '):
 			if int(vv) > ii:
-				edges1.append((ii, int(vv)))
+				if (ii, int(vv)) not in edges1:
+					edges1.append((ii, int(vv)))
 			if int(vv) < ii:
-				assert (int(vv), ii) in edges1
+				# print (degree, neighbors)
+				# print (vv, ii)
+				# assert (int(vv), ii) in edges1
+				if (int(vv), ii) not in edges1:
+					edges1.append((int(vv), ii))
 	for ii in range(n):
 		degree, neighbors = lines[1+n+ii].split('\t')
 		for vv in neighbors.strip().split(' '):
