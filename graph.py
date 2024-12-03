@@ -44,10 +44,10 @@ def read_test_case(filename):
 
 def generate_random_graph(n_nodes, m_edges):
 	# Do not use for dense graphs (m > n²/4)
-	nodes = list(range(1, 1+n_nodes))
+	nodes = list(range(n_nodes))
 	edges = []
 	while len(edges) < m_edges:
-		new_edge = (int(1+random.random()*n_nodes), int(1+random.random()*n_nodes))
+		new_edge = (int(random.random()*n_nodes), int(random.random()*n_nodes))
 		if new_edge[0] < new_edge[1] and new_edge not in edges:
 			edges.append(new_edge)
 	return Graph(nodes, edges)
