@@ -73,13 +73,12 @@ class Brazil_Formulation():
 
 		if self.model.status == GRB.OPTIMAL:
 			answer = self.model.objVal
-			return (True, answer, final_time)
+			return (True, answer, answer, final_time)
 		if self.model.status == GRB.INTERRUPTED:
 			answer = self.model.objVal
 			bound = self.model.objBound
 			print ('Stopped after %.2f seconds'%final_time)
-			return (False, answer, bound)
-
+			return (False, answer, bound, final_time)
 
 	def add_constraints_33_34(self):
 		# Adds constraints 33 & 34 for the special case I=N(i), K=N(k) if they are facet-defining
@@ -90,20 +89,30 @@ class Brazil_Formulation():
 				if 1 < i_neighbors < k_neighbors:
 					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
 						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
-						i_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(i, p)] for p in graph_H.neighbors[k]))
+						i_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(i, p)] for p in self.graph_H.neighbors[k]))
 				if 1 < k_neighbors < i_neighbors:
 					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
 						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
-						k_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(p, k)] for p in graph_G.neighbors[i]))
+						k_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(p, k)] for p in self.graph_G.neighbors[i]))
 
+def solver_IP(g1, g2, time_limit=1200):
+	form = Brazil_Formulation(g1, g2)
+	form.setup_IP_formulation()
+	return form.solve_model(time_limit=time_limit)
 
+def solver_theorem5(g1, g2, time_limit=1200):
+	form = Brazil_Formulation(g1, g2)
+	form.setup_IP_formulation()
+	form.add_constraints_33_34()
+	return form.solve_model(time_limit=time_limit)
 
 if __name__ == '__main__':
 	# g1, g2 = graph.generate_random_graph(25, 40), graph.generate_random_graph(25, 55)
-	g1, g2 = graph.read_test_case('instances/marenco/df8.dat')
+	g1, g2 = graph.read_test_case('instances/marenco/df5.dat')
 	form = Brazil_Formulation(g1, g2)
 	form.setup_IP_formulation()
 	aux = form.solve_model(time_limit=1200)
 	print (aux)
+	print (solver_theorem5(g1, g2))
 
 
