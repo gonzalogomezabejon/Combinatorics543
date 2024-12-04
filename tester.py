@@ -25,8 +25,9 @@ if __name__=='__main__':
 		# 'Brazil_IP_binary': brazil_formulation.solver_IP_binary,
 		# 'Brazil_IP': brazil_formulation.solver_IP,
 		# 'Brazil_cuts': brazil_formulation.solver_theorem5,
-		'Marenco_IP': marenco_formulation.solver_marenco_IP,
-		'Marenco_IP_binary': marenco_formulation.solver_marenco_IP_binary,
+		'Marenco_7_forward': marenco_formulation.solver_ineq_7,
+		'Marenco_7_reversed': marenco_formulation.solver_ineq_7_rev,
+		# 'Marenco_IP_binary': marenco_formulation.solver_marenco_IP_binary,
 	}
 	for a,b,instances in os.walk('instances/marenco'):
 		pass

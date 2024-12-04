@@ -42,7 +42,13 @@ class MarencoFormulation(MCESFormulation):
         print("type", type(x), type(y))
         self.variables = [x, y]
 
-    def add_cuts(self):
+    def add_ineq_7(self):
+        x,y = self.variables
+        for ii in self.graph_G.nodes:
+            self.model.addConstr(gp.quicksum(x[aa, bb] for aa,bb in self.graph_G.delta[ii]) <= 
+                gp.quicksum(min(len(self.graph_G.neighbors[ii]), len(self.graph_H.neighbors[kk]))*y[ii,kk] for kk in self.graph_H.nodes))
+
+    def add_ineq_8(self):
         x,y = self.variables
         self.model.addConstrs()
 
@@ -55,14 +61,26 @@ def solver_marenco_IP_binary(g1, g2, time_limit=1200):
     marenco.convert_vtypes_to(gp.GRB.INTEGER)
     return marenco.solve_model(time_limit=time_limit)
 
+def solver_ineq_7(g1, g2, time_limit=1200):
+    marenco = MarencoFormulation(g1, g2, integer_y=True)
+    marenco.add_ineq_7()
+    return marenco.solve_model(time_limit=time_limit)
+
+def solver_ineq_7_rev(g1, g2, time_limit=1200):
+    marenco = MarencoFormulation(g2, g1, integer_y=True)
+    marenco.add_ineq_7()
+    return marenco.solve_model(time_limit=time_limit)
+
 
 if __name__ == '__main__':
     # g1 = graph.generate_random_graph(10, 40)
     # g2 = graph.generate_random_graph(10, 30)
 
 
-    g1, g2 = graph.read_test_case("Combinatorics543/instances/marenco/str10.dat")
+    # g1, g2 = graph.read_test_case("Combinatorics543/instances/marenco/str10.dat")
+    g1, g2 = graph.read_test_case("instances/marenco/str3.dat")
     marenco = MarencoFormulation(g1, g2)
+    marenco.add_ineq_7()
     # # marenco.solve_lp_relaxation()
     marenco.solve_IP_formulation()
     # marenco.solve_lp_relaxation()
