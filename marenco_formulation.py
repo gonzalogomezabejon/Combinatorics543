@@ -1,21 +1,25 @@
 
 import gurobipy as gp
+from gurobipy import GRB
 import networkx as nx
 import graph
 import os
 import matplotlib.pyplot as plt
 
-from Combinatorics543.MCESFormulation import MCESFormulation
+from MCESFormulation import MCESFormulation
 
 
 class MarencoFormulation(MCESFormulation):
 
-    def __init__(self, graph_G, graph_H):
+    def __init__(self, graph_G, graph_H, integer_y=False):
         super().__init__(graph_G, graph_H)
 
         self.model = gp.Model("Marenco")
         # cross variables
-        y = self.model.addVars(len(self.graph_G.nodes), len(self.graph_H.nodes), lb=0, ub=1, name="y")
+        if integer_y:
+            y = self.model.addVars(len(self.graph_G.nodes), len(self.graph_H.nodes), name="y", vtype = GRB.BINARY)
+        else:
+            y = self.model.addVars(len(self.graph_G.nodes), len(self.graph_H.nodes), lb=0, ub=1, name="y")
         # matched edges variables
         x = self.model.addVars(len(self.graph_G.nodes), len(self.graph_G.nodes), lb=0, ub=1, name="x")
         # the following two constrs defines a matching between G1 and G2
@@ -36,8 +40,20 @@ class MarencoFormulation(MCESFormulation):
         self.model.update()
         # important! Set the variables of the model so solve methods understand what the variables are
         print("type", type(x), type(y))
-
         self.variables = [x, y]
+
+    def add_cuts(self):
+        x,y = self.variables
+        self.model.addConstrs()
+
+def solver_marenco_IP(g1, g2, time_limit=1200):
+    marenco = MarencoFormulation(g1, g2, integer_y=True)
+    return marenco.solve_model(time_limit=time_limit)
+
+def solver_marenco_IP_binary(g1, g2, time_limit=1200):
+    marenco = MarencoFormulation(g1, g2, integer_y=False)
+    marenco.convert_vtypes_to(gp.GRB.INTEGER)
+    return marenco.solve_model(time_limit=time_limit)
 
 
 if __name__ == '__main__':

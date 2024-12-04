@@ -22,21 +22,30 @@ class Brazil_Formulation():
 		self.graph_H = graph_H
 		self.model = None
 
-	def setup_IP_formulation(self):
+	def setup_IP_formulation(self, binary_c=False, tight_ineq=False):
 		model = gp.Model("MCES_formulation_2", env=my_env)
 		# Variables
 		self.modelvars = {}
 		for ii in self.graph_G.nodes:
 			for kk in self.graph_H.nodes:
-				self.modelvars['y_%d_%d'%(ii, kk)] = model.addVar(name = 'y_%d_%d'%(ii, kk), lb=0, vtype = GRB.BINARY)
+				self.modelvars['y_%d_%d'%(ii, kk)] = model.addVar(name = 'y_%d_%d'%(ii, kk), vtype = GRB.BINARY)
 		for ii, jj in self.graph_G.edges:
 			for kk, ll in self.graph_H.edges:
-				self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] = model.addVar(name = 'c_%d_%d_%d_%d'%(ii,jj,kk,ll), lb=0)
+				if binary_c:
+					self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] = model.addVar(name = 'c_%d_%d_%d_%d'%(ii,jj,kk,ll), vtype = GRB.BINARY)
+				else:
+					self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] = model.addVar(name = 'c_%d_%d_%d_%d'%(ii,jj,kk,ll), lb=0)
 		# Constraints
 		for ii in self.graph_G.nodes:
-			model.addConstr(gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for kk in self.graph_H.nodes) <= 1)
+			if tight_ineq:
+				model.addConstr(gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for kk in self.graph_H.nodes) == 1)
+			else:
+				model.addConstr(gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for kk in self.graph_H.nodes) <= 1)
 		for kk in self.graph_H.nodes:
-			model.addConstr(gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for ii in self.graph_G.nodes) <= 1)
+			if tight_ineq:
+				model.addConstr(gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for ii in self.graph_G.nodes) == 1)
+			else:
+				model.addConstr(gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for ii in self.graph_G.nodes) <= 1)
 		for ii, jj in self.graph_G.edges:
 			model.addConstr(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)] for kk, ll in self.graph_H.edges)
 				<= gp.quicksum(self.modelvars['y_%d_%d'%(ii, kk)] for kk in self.graph_H.nodes))
@@ -73,8 +82,10 @@ class Brazil_Formulation():
 					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
 						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
 						k_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(p, k)] for p in self.graph_G.neighbors[i]))
+	def add_constraints_55_56(self):
+		pass
 
-	def solve_model(self, time_limit = 300):
+	def solve_model(self, time_limit = 1200):
 		thread1 = threading.Thread(target = self.model.optimize)
 		end_time = time.time() + time_limit
 		thread1.start()
@@ -83,8 +94,8 @@ class Brazil_Formulation():
 			if time.time() > end_time and running:
 				self.model.terminate()
 				running = False
-			time.sleep(0.1)
-		final_time = time.time() - end_time + time_limit
+			time.sleep(0.01)
+		final_time = round(time.time() - end_time + time_limit, 2)
 
 		if self.model.status == GRB.OPTIMAL:
 			answer = self.model.objVal
@@ -93,11 +104,21 @@ class Brazil_Formulation():
 			answer = self.model.objVal
 			bound = self.model.objBound
 			print ('Stopped after %.2f seconds'%final_time)
-			return (False, answer, bound, round(final_time, 1))
+			return (False, answer, bound, final_time)
 
 def solver_IP(g1, g2, time_limit=1200):
 	form = Brazil_Formulation(g1, g2)
 	form.setup_IP_formulation()
+	return form.solve_model(time_limit=time_limit)
+
+def solver_IP_binary(g1, g2, time_limit=1200):
+	form = Brazil_Formulation(g1, g2)
+	form.setup_IP_formulation(binary_c=True)
+	return form.solve_model(time_limit=time_limit)
+
+def solver_IP_tight(g1, g2, time_limit=1200):
+	form = Brazil_Formulation(g1, g2)
+	form.setup_IP_formulation(tight_ineq=True)
 	return form.solve_model(time_limit=time_limit)
 
 def solver_theorem5(g1, g2, time_limit=1200):
@@ -108,7 +129,7 @@ def solver_theorem5(g1, g2, time_limit=1200):
 
 if __name__ == '__main__':
 	# g1, g2 = graph.generate_random_graph(25, 40), graph.generate_random_graph(25, 55)
-	g1, g2 = graph.read_test_case('instances/marenco/df7.dat')
+	g1, g2 = graph.read_test_case('instances/marenco/prb8b.dat')
 	form = Brazil_Formulation(g1, g2)
 	form.setup_IP_formulation()
 	aux = form.solve_model(time_limit=1200)
