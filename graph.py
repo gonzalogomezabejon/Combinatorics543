@@ -50,11 +50,8 @@ def read_test_case(filename):
 		i += 1
 		while i < deg_pos + deg + 1:
 			w = values[i]
-			if w > v:
-				graph_G_edges.append((v, w))
-			if w < v:
-				if (w, v) not in graph_H_edges:
-					graph_H_edges.append((w, v))
+			if (min(v, w), max(v, w)) not in graph_G_edges:
+				graph_G_edges.append((min(v, w), max(v, w)))
 			i += 1
 		v += 1
 	v = 0
@@ -64,11 +61,8 @@ def read_test_case(filename):
 		i += 1
 		while i < deg_pos + deg + 1:
 			w = values[i]
-			if w > v:
-				graph_H_edges.append((v, w))
-			if w < v:
-				if (w, v) not in graph_H_edges:
-					graph_H_edges.append((w, v))
+			if (min(v, w), max(v, w)) not in graph_H_edges:
+				graph_H_edges.append((min(v, w), max(v, w)))
 			i += 1
 		v += 1
 

@@ -2,6 +2,7 @@
 import gurobipy as gp
 import networkx as nx
 import graph
+import os
 import matplotlib.pyplot as plt
 
 from Combinatorics543.MCESFormulation import MCESFormulation
@@ -40,10 +41,13 @@ class MarencoFormulation(MCESFormulation):
 
 
 if __name__ == '__main__':
-    g1 = graph.generate_random_graph(10, 40)
-    g2 = graph.generate_random_graph(10, 30)
+    # g1 = graph.generate_random_graph(10, 40)
+    # g2 = graph.generate_random_graph(10, 30)
 
+
+    g1, g2 = graph.read_test_case("Combinatorics543/instances/marenco/str10.dat")
     marenco = MarencoFormulation(g1, g2)
-    marenco.solve_lp_relaxation()
+    # # marenco.solve_lp_relaxation()
     marenco.solve_IP_formulation()
+    # marenco.solve_lp_relaxation()
 
