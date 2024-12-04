@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import brazil_formulation, graph, marenco_formulation
+import brazil_formulation, graph#, marenco_formulation
 import os
 
 
@@ -27,6 +27,8 @@ if __name__=='__main__':
 	}
 	for a,b,instances in os.walk('instances/marenco'):
 		pass
+	# instances = ['prb1.dat', 'prb2.dat', 'prb3.dat', 'prb4.dat', 'prb5.dat', 'prb6.dat', 'str2.dat', 'df11.dat', 'df12.dat', 'df13.dat']
+	# instances = ['df5.dat', 'df7.dat']
 	data = test_solvers('instances/marenco/', instances, solvers)
 	for case in data:
 		print (case, data[case])

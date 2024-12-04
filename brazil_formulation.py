@@ -59,6 +59,21 @@ class Brazil_Formulation():
 			for ii,jj in self.graph_G.edges), GRB.MAXIMIZE)
 		self.model = model
 
+	def add_constraints_33_34(self):
+		# Adds constraints 33 & 34 for the special case I=N(i), K=N(k) if they are facet-defining
+		for i in self.graph_G.nodes:
+			for k in self.graph_H.nodes:
+				i_neighbors = len(self.graph_G.delta[i])
+				k_neighbors = len(self.graph_H.delta[k])
+				if 1 < i_neighbors < k_neighbors:
+					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
+						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
+						i_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(i, p)] for p in self.graph_H.neighbors[k]))
+				if 1 < k_neighbors < i_neighbors:
+					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
+						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
+						k_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(p, k)] for p in self.graph_G.neighbors[i]))
+
 	def solve_model(self, time_limit = 300):
 		thread1 = threading.Thread(target = self.model.optimize)
 		end_time = time.time() + time_limit
@@ -78,22 +93,7 @@ class Brazil_Formulation():
 			answer = self.model.objVal
 			bound = self.model.objBound
 			print ('Stopped after %.2f seconds'%final_time)
-			return (False, answer, bound, final_time)
-
-	def add_constraints_33_34(self):
-		# Adds constraints 33 & 34 for the special case I=N(i), K=N(k) if they are facet-defining
-		for i in self.graph_G.nodes:
-			for k in self.graph_H.nodes:
-				i_neighbors = len(self.graph_G.delta[i])
-				k_neighbors = len(self.graph_H.delta[k])
-				if 1 < i_neighbors < k_neighbors:
-					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
-						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
-						i_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(i, p)] for p in self.graph_H.neighbors[k]))
-				if 1 < k_neighbors < i_neighbors:
-					self.model.addConstr(gp.quicksum(gp.quicksum(self.modelvars['c_%d_%d_%d_%d'%(ii,jj,kk,ll)]
-						for kk, ll in self.graph_H.delta[k]) for ii, jj in self.graph_G.delta[i]) <=
-						k_neighbors*self.modelvars['y_%d_%d'%(i,k)] + gp.quicksum(self.modelvars['y_%d_%d'%(p, k)] for p in self.graph_G.neighbors[i]))
+			return (False, answer, bound, round(final_time, 1))
 
 def solver_IP(g1, g2, time_limit=1200):
 	form = Brazil_Formulation(g1, g2)
@@ -108,7 +108,7 @@ def solver_theorem5(g1, g2, time_limit=1200):
 
 if __name__ == '__main__':
 	# g1, g2 = graph.generate_random_graph(25, 40), graph.generate_random_graph(25, 55)
-	g1, g2 = graph.read_test_case('instances/marenco/df5.dat')
+	g1, g2 = graph.read_test_case('instances/marenco/df7.dat')
 	form = Brazil_Formulation(g1, g2)
 	form.setup_IP_formulation()
 	aux = form.solve_model(time_limit=1200)
