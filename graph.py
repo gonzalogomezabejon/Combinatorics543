@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import random
+import os
 
 class Graph:
 	def __init__(self, nodes, edges):
@@ -10,7 +11,7 @@ class Graph:
 		for v, w in edges:
 			assert v < len(nodes)
 			assert w < len(nodes)
-		
+
 		self.nodes = nodes
 		self.edges = edges
 		self.neighbors = {node: [] for node in nodes}
@@ -23,35 +24,56 @@ class Graph:
 	def find_triangles(self):
 		pass
 
+
+def read_all_test_cases():
+	base_location = "instances/marenco/"
+	test_cases = []
+	for file_name in os.listdir(base_location):
+		try:
+			test_cases.append(read_test_case(base_location + file_name))
+		except:
+			print("exception in ", file_name)
+	return test_cases
+
+
 def read_test_case(filename):
+	graph_G_edges = []
+	graph_H_edges = []
 	with open(filename, 'r') as f:
-		lines = f.read().split('\n')
-	n = int(lines[0].strip())
-	edges1 = []
-	edges2 = []
-	for ii in range(n):
-		if lines[1+ii][0] == '0':
-			continue
-		degree, neighbors = lines[1+ii].split('\t')
-		for vv in neighbors.strip().split(' '):
-			if int(vv) > ii:
-				if (ii, int(vv)) not in edges1:
-					edges1.append((ii, int(vv)))
-			if int(vv) < ii:
-				# print (degree, neighbors)
-				# print (vv, ii)
-				# assert (int(vv), ii) in edges1
-				if (int(vv), ii) not in edges1:
-					edges1.append((int(vv), ii))
-	for ii in range(n):
-		degree, neighbors = lines[1+n+ii].split('\t')
-		for vv in neighbors.strip().split(' '):
-			if int(vv) > ii:
-				edges2.append((ii, int(vv)))
-			if int(vv) < ii:
-				assert (int(vv), ii) in edges2
-	graph1 = Graph(range(n), edges1)
-	graph2 = Graph(range(n), edges2)
+		values = list(map(int, f.read().split()))
+	n = values[0]
+	v = 0
+	i = 1
+	while v < n:
+		deg = values[i]
+		deg_pos = i
+		i += 1
+		while i < deg_pos + deg + 1:
+			w = values[i]
+			if w > v:
+				graph_G_edges.append((v, w))
+			if w < v:
+				if (w, v) not in graph_H_edges:
+					graph_H_edges.append((w, v))
+			i += 1
+		v += 1
+	v = 0
+	while v < n:
+		deg = values[i]
+		deg_pos = i
+		i += 1
+		while i < deg_pos + deg + 1:
+			w = values[i]
+			if w > v:
+				graph_H_edges.append((v, w))
+			if w < v:
+				if (w, v) not in graph_H_edges:
+					graph_H_edges.append((w, v))
+			i += 1
+		v += 1
+
+	graph1 = Graph(list(range(n)), graph_G_edges)
+	graph2 = Graph(list(range(n)), graph_H_edges)
 	return graph1, graph2
 
 def generate_random_graph(n_nodes, m_edges):
@@ -67,9 +89,11 @@ def generate_random_graph(n_nodes, m_edges):
 
 
 if __name__ == '__main__':
-	test = generate_random_graph(5, 10)
-	print (test.nodes)
-	print (test.edges)
-	g1, g2 = read_test_case('instances/marenco/df1.dat')
-	print (g1.edges)
-	print (g2.edges)
+	# test = generate_random_graph(5, 10)
+	# print (test.nodes)
+	# print (test.edges)
+	# g1, g2 = read_test_case('instances/marenco/df1.dat')
+	# print (g1.edges)
+	# print (g2.edges)
+	test_cases = read_all_test_cases()
+
