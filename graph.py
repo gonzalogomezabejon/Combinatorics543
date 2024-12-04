@@ -72,6 +72,7 @@ def read_test_case(filename):
 			i += 1
 		v += 1
 
+	assert i == len(values)
 	graph1 = Graph(list(range(n)), graph_G_edges)
 	graph2 = Graph(list(range(n)), graph_H_edges)
 	return graph1, graph2
