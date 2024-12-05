@@ -2,6 +2,8 @@
 
 import random
 import os
+import numpy as np
+
 
 class Graph:
 	def __init__(self, nodes, edges):
@@ -23,6 +25,13 @@ class Graph:
 			self.delta[jj].append((ii, jj))
 	def find_triangles(self):
 		pass
+	def generate_isomorphic_graph(self):
+		new_nodes = np.random.permutation(self.nodes)
+		new_edges = []
+		for ii, jj in self.edges:
+			iii, jjj = new_nodes[ii], new_nodes[jj]
+			new_edges.append((iii, jjj) if iii<jjj else (jjj, iii))
+		return Graph(self.nodes.copy(), new_edges)
 
 
 def read_all_test_cases():
@@ -81,6 +90,29 @@ def generate_random_graph(n_nodes, m_edges):
 			edges.append(new_edge)
 	return Graph(nodes, edges)
 
+def generate_random_tree(n_nodes):
+	nodes = list(range(n_nodes))
+	edges = []
+	for ii in range(1,n_nodes):
+		edges.append((int(random.random()*ii), ii))
+	return Graph(nodes, edges)
+
+def write_test_case(graph_g, graph_h, filename):
+	lines = ['%d'%len(graph_g.nodes)]
+	for node in range(len(graph_g.nodes)):
+		neigh = graph_g.neighbors[node]
+		lines.append('%d \t '%len(neigh) + ' '.join(['%d'%it for it in neigh]))
+	for node in range(len(graph_h.nodes)):
+		neigh = graph_h.neighbors[node]
+		lines.append('%d \t '%len(neigh) + ' '.join(['%d'%it for it in neigh]))
+	with open(filename, 'w') as f:
+		f.write('\n'.join(lines))
+
+def generate_tree_isomorphism(n_nodes):
+	original_tree = generate_random_tree(n_nodes)
+	g1 = original_tree.generate_isomorphic_graph()
+	g2 = original_tree.generate_isomorphic_graph()
+	return g1, g2
 
 
 if __name__ == '__main__':
@@ -91,4 +123,7 @@ if __name__ == '__main__':
 	# print (g1.edges)
 	# print (g2.edges)
 	test_cases = read_all_test_cases()
+	for num in [40, 70, 100, 150, 200, 300, 500]:
+		g1, g2 = generate_tree_isomorphism(num)
+		write_test_case(g1, g2, 'instances/isomorphic/%dtree.dat'%num)
 
