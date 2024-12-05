@@ -153,48 +153,48 @@ data2 = {
 data3 = {'prb1': {'n': 3, 'E_G': 2, 'E_H': 3, 'Brazil_tight': (True, 2.0, 2.0, 0.01), 'Marenco_7_forward': (True, 2.0, 2.0, 0.01), 'Marenco_7_reversed': (True, 2.0, 2.0, 0.01)}, 'prb2': {'n': 4, 'E_G': 4, 'E_H': 4, 'Brazil_tight': (True, 3.0, 3.0, 0.01), 'Marenco_7_forward': (True, 3.0, 3.0, 0.01), 'Marenco_7_reversed': (True, 3.0, 3.0, 0.01)}, 'prb3': {'n': 5, 'E_G': 5, 'E_H': 6, 'Brazil_tight': (True, 5.0, 5.0, 0.01), 'Marenco_7_forward': (True, 5.0, 5.0, 0.01), 'Marenco_7_reversed': (True, 5.0, 5.0, 0.01)}, 'prb4': {'n': 5, 'E_G': 6, 'E_H': 6, 'Brazil_tight': (True, 5.0, 5.0, 0.03), 'Marenco_7_forward': (True, 5.0, 5.0, 0.01), 'Marenco_7_reversed': (True, 5.0, 5.0, 0.01)}, 'str2': {'n': 6, 'E_G': 15, 'E_H': 8, 'Brazil_tight': (True, 8.0, 8.0, 0.02), 'Marenco_7_forward': (True, 8.0, 8.0, 0.01), 'Marenco_7_reversed': (True, 8.0, 8.0, 0.01)}, 'prb5': {'n': 8, 'E_G': 10, 'E_H': 10, 'Brazil_tight': (True, 9.0, 9.0, 0.03), 'Marenco_7_forward': (True, 9.0, 9.0, 0.01), 'Marenco_7_reversed': (True, 9.0, 9.0, 0.01)}, 'prb6': {'n': 8, 'E_G': 13, 'E_H': 10, 'Brazil_tight': (True, 10.0, 10.0, 0.02), 'Marenco_7_forward': (True, 10.0, 10.0, 0.01), 'Marenco_7_reversed': (True, 10.0, 10.0, 0.01)}, 'prb7b': {'n': 8, 'E_G': 13, 'E_H': 12, 'Brazil_tight': (True, 11.0, 11.0, 0.04), 'Marenco_7_forward': (True, 11.0, 11.0, 0.02), 'Marenco_7_reversed': (True, 11.0, 11.0, 0.02)}, 'prb8b': {'n': 8, 'E_G': 10, 'E_H': 11, 'Brazil_tight': (True, 6.0, 6.0, 0.02), 'Marenco_7_forward': (True, 6.0, 6.0, 0.01), 'Marenco_7_reversed': (True, 6.0, 6.0, 0.01)}, 'prb9b': {'n': 8, 'E_G': 13, 'E_H': 11, 'Brazil_tight': (True, 10.0, 10.0, 0.13), 'Marenco_7_forward': (True, 10.0, 10.0, 0.05), 'Marenco_7_reversed': (True, 10.0, 10.0, 0.05)}, 'wars1': {'n': 8, 'E_G': 10, 'E_H': 12, 'Brazil_tight': (True, 10.0, 10.0, 0.01), 'Marenco_7_forward': (True, 10.0, 10.0, 0.01), 'Marenco_7_reversed': (True, 10.0, 10.0, 0.01)}, 'wars2': {'n': 8, 'E_G': 9, 'E_H': 12, 'Brazil_tight': (True, 9.0, 9.0, 0.01), 'Marenco_7_forward': (True, 9.0, 9.0, 0.01), 'Marenco_7_reversed': (True, 9.0, 9.0, 0.01)}, 'wars3': {'n': 8, 'E_G': 13, 'E_H': 12, 'Brazil_tight': (True, 11.0, 11.0, 0.07), 'Marenco_7_forward': (True, 11.0, 11.0, 0.01), 'Marenco_7_reversed': (True, 11.0, 11.0, 0.01)}, 'wars4': {'n': 8, 'E_G': 12, 'E_H': 12, 'Brazil_tight': (True, 6.0, 6.0, 0.01), 'Marenco_7_forward': (True, 6.0, 6.0, 0.01), 'Marenco_7_reversed': (True, 6.0, 6.0, 0.01)}, 'wars5': {'n': 8, 'E_G': 13, 'E_H': 12, 'Brazil_tight': (True, 9.0, 9.0, 0.11), 'Marenco_7_forward': (True, 9.0, 9.0, 0.02), 'Marenco_7_reversed': (True, 9.0, 9.0, 0.02)}, 'str1': {'n': 9, 'E_G': 36, 'E_H': 14, 'Brazil_tight': (True, 14.0, 14.0, 0.03), 'Marenco_7_forward': (True, 14.0, 14.0, 0.01), 'Marenco_7_reversed': (True, 14.0, 14.0, 0.01)}, 'prb7': {'n': 10, 'E_G': 16, 'E_H': 14, 'Brazil_tight': (True, 13.0, 13.0, 0.31), 'Marenco_7_forward': (True, 13.0, 13.0, 0.08), 'Marenco_7_reversed': (True, 13.0, 13.0, 0.07)}, 'prb8': {'n': 11, 'E_G': 23, 'E_H': 15, 'Brazil_tight': (True, 13.0, 13.0, 0.57), 'Marenco_7_forward': (True, 13.0, 13.0, 0.22), 'Marenco_7_reversed': (True, 13.0, 13.0, 0.19)}, 'prb9': {'n': 11, 'E_G': 17, 'E_H': 15, 'Brazil_tight': (True, 14.0, 14.0, 0.29), 'Marenco_7_forward': (True, 14.0, 14.0, 0.16), 'Marenco_7_reversed': (True, 14.0, 14.0, 0.16)}, 'df11': {'n': 12, 'E_G': 21, 'E_H': 36, 'Brazil_tight': (True, 18.0, 18.0, 2.39), 'Marenco_7_forward': (True, 18.0, 18.0, 0.16), 'Marenco_7_reversed': (True, 18.0, 18.0, 0.12)}, 'df12': {'n': 12, 'E_G': 25, 'E_H': 36, 'Brazil_tight': (True, 23.0, 23.0, 3.12), 'Marenco_7_forward': (True, 23.0, 23.0, 0.2), 'Marenco_7_reversed': (True, 23.0, 23.0, 0.18)}, 'df13': {'n': 12, 'E_G': 25, 'E_H': 36, 'Brazil_tight': (True, 23.0, 23.0, 3.27), 'Marenco_7_forward': (True, 23.0, 23.0, 0.19), 'Marenco_7_reversed': (True, 23.0, 23.0, 0.21)}, 'df1': {'n': 12, 'E_G': 25, 'E_H': 18, 'Brazil_tight': (True, 18.0, 18.0, 0.11), 'Marenco_7_forward': (True, 18.0, 18.0, 0.02), 'Marenco_7_reversed': (True, 18.0, 18.0, 0.02)}, 'gauss1': {'n': 12, 'E_G': 16, 'E_H': 24, 'Brazil_tight': (True, 15.0, 15.0, 0.5), 'Marenco_7_forward': (True, 15.0, 15.0, 0.03), 'Marenco_7_reversed': (True, 15.0, 15.0, 0.03)}, 'dc2': {'n': 15, 'E_G': 14, 'E_H': 30, 'Brazil_tight': (True, 14.0, 14.0, 0.18), 'Marenco_7_forward': (True, 14.0, 14.0, 0.01), 'Marenco_7_reversed': (True, 14.0, 14.0, 0.01)}, 'str3': {'n': 15, 'E_G': 60, 'E_H': 26, 'Brazil_tight': (True, 26.0, 26.0, 1.79), 'Marenco_7_forward': (True, 26.0, 26.0, 0.21), 'Marenco_7_reversed': (True, 26.0, 26.0, 0.21)}, 'str4': {'n': 15, 'E_G': 60, 'E_H': 26, 'Brazil_tight': (True, 25.000001541954123, 25.000001541954123, 35.02), 'Marenco_7_forward': (True, 25.0, 25.0, 158.52), 'Marenco_7_reversed': (True, 25.0, 25.0, 161.95)}, 'gauss3': {'n': 16, 'E_G': 25, 'E_H': 32, 'Brazil_tight': (True, 22.0, 22.0, 3.14), 'Marenco_7_forward': (True, 22.0, 22.0, 0.16), 'Marenco_7_reversed': (True, 22.0, 22.0, 0.16)}, 'prb10': {'n': 16, 'E_G': 26, 'E_H': 26, 'Brazil_tight': (True, 20.000000099899616, 20.000000099899616, 5.23), 'Marenco_7_forward': (True, 20.0, 20.0, 1.02), 'Marenco_7_reversed': (True, 20.0, 20.0, 1.03)}, 'dc1': {'n': 18, 'E_G': 14, 'E_H': 36, 'Brazil_tight': (True, 14.0, 14.0, 0.29), 'Marenco_7_forward': (True, 14.0, 14.0, 0.02), 'Marenco_7_reversed': (True, 14.0, 14.0, 0.02)}}
 
 data_original = { # Replace ones with time values from the paper
-'prb1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb4': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb5': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb6': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb7b': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb8b': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb9b': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'wars1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'wars2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'wars3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'wars4': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'wars5': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb7': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb8': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb9': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'df11': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'df12': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'df13': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'df1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'gauss1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'dc2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str4': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'gauss3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'prb10': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'dc1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'df8': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'gauss2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'memsy3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'memsy6': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'memsy8': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str13': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str7': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str9': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str17': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str19': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str15': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
-'str18': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)}
+'prb1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb4': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb5': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb6': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb7b': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb8b': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb9b': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'wars1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'wars2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'wars3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'wars4': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'wars5': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb7': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb8': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb9': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'df11': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'df12': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'df13': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'df1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'gauss1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'dc2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str4': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'gauss3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'prb10': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'dc1': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'df8': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'gauss2': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'memsy3': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'memsy6': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'memsy8': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str13': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str7': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str9': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str17': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str19': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str15': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
+'str18': {'Bahiense': (True, 0, 0, 1), 'Marenco': (True, 0, 0, 1)},
 }
 
 def argmin(dic, func):
@@ -217,7 +217,7 @@ for data in [data1, data2, data3]:
 				table[instance][field] = (is_solved, int(round(lb, 4)), int(round(ub, 4)), round(time, 2))
 
 # print (table)
-fields = ['n', 'E_G', 'E_H', 'Brazil_IP', 'Brazil_cuts', 'Brazil_IP_binary', 'Brazil_tight', 'Marenco_IP']
+fields = ['n', 'E_G', 'E_H', 'Marenco_7_forward', 'Marenco_7_reversed', 'Brazil_IP', 'Brazil_cuts', 'Brazil_IP_binary', 'Brazil_tight']
 best_result = {}
 bahiense_solved = ['prb1', 'prb2', 'prb3', 'prb4', 'str2', 'prb5', 'prb6', 'prb7b', 'prb8b', 'prb9b', 'wars1', 'wars2', 'wars3', 'wars4', 'wars5', 'str1', 'prb7', 'prb8', 'prb9', 'df11', 'df12', 'df13', 'df1', 'gauss1', 'dc2', 'str3', 'str4', 'gauss3', 'prb10', 'dc1', 'df8', 'gauss2', 'memsy3', 'memsy6', 'memsy8', 'str13', 'str7', 'str9', 'str17', 'str19', 'str15', 'str18']
 
@@ -255,5 +255,54 @@ for instance in sorted([it for it in table if (it not in bahiense_solved)], key=
 print ('\n'*3 + text2)
 
 
+################# BORIS INSTANCES ##################
+# (generated by Saber & Gonzalo)
 
+sparse_data = {'10sparse': {'n': 10, 'E_G': 20, 'E_H': 20, 'Brazil_tight': (True, 20.0, 20.0, 0.04), 'Brazil_IP_binary': (True, 20.0, 20.0, 0.07), 'Brazil_IP': (True, 20.0, 20.0, 0.04), 'Brazil_cuts': (True, 20.0, 20.0, 0.06), 'Marenco_7_forward': (True, 20.0, 20.0, 0.01), 'Marenco_7_reversed': (True, 20.0, 20.0, 0.01)}, '20sparse': {'n': 20, 'E_G': 40, 'E_H': 40, 'Brazil_tight': (True, 40.0, 40.0, 0.69), 'Brazil_IP_binary': (True, 40.0, 40.0, 0.61), 'Brazil_IP': (True, 40.0, 40.0, 0.58), 'Brazil_cuts': (True, 40.0, 40.0, 0.62), 'Marenco_7_forward': (True, 40.0, 40.0, 0.03), 'Marenco_7_reversed': (True, 40.0, 40.0, 0.03)}, '30sparse': {'n': 30, 'E_G': 60, 'E_H': 60, 'Brazil_tight': (True, 60.0, 60.0, 3.88), 'Brazil_IP_binary': (True, 60.0, 60.0, 4.6), 'Brazil_IP': (True, 60.0, 60.0, 3.86), 'Brazil_cuts': (True, 60.0, 60.0, 4.31), 'Marenco_7_forward': (True, 60.0, 60.0, 0.06), 'Marenco_7_reversed': (True, 60.0, 60.0, 0.07)}, '40sparse': {'n': 40, 'E_G': 80, 'E_H': 80, 'Brazil_tight': (True, 80.0, 80.0, 12.32), 'Brazil_IP_binary': (True, 80.0, 80.0, 15.51), 'Brazil_IP': (True, 80.0, 80.0, 13.05), 'Brazil_cuts': (True, 80.0, 80.0, 13.74), 'Marenco_7_forward': (True, 80.0, 80.0, 0.17), 'Marenco_7_reversed': (True, 80.0, 80.0, 0.16)}, '50sparse': {'n': 50, 'E_G': 100, 'E_H': 100, 'Brazil_tight': (True, 100.0, 100.0, 53.74), 'Brazil_IP_binary': (True, 100.0, 100.0, 65.04), 'Brazil_IP': (True, 100.0, 100.0, 61.85), 'Brazil_cuts': (True, 100.0, 100.0, 2.22), 'Marenco_7_forward': (True, 100.0, 100.0, 0.49), 'Marenco_7_reversed': (True, 100.0, 100.0, 0.45)}, '60sparse': {'n': 60, 'E_G': 120, 'E_H': 120, 'Brazil_tight': (True, 120.0, 120.0, 0.31), 'Brazil_IP_binary': (True, 120.0, 120.0, 28.69), 'Brazil_IP': (True, 120.0, 120.0, 19.45), 'Brazil_cuts': (True, 120.0, 120.0, 11.54), 'Marenco_7_forward': (True, 120.0, 120.0, 0.67), 'Marenco_7_reversed': (True, 120.0, 120.0, 0.9)}, '70sparse': {'n': 70, 'E_G': 140, 'E_H': 140, 'Brazil_tight': (True, 140.0, 140.0, 0.41), 'Brazil_IP_binary': (True, 140.0, 140.0, 53.56), 'Brazil_IP': (True, 140.0, 140.0, 51.84), 'Brazil_cuts': (True, 140.0, 140.0, 99.55), 'Marenco_7_forward': (True, 140.0, 140.0, 1.22), 'Marenco_7_reversed': (True, 140.0, 140.0, 1.47)}, '80sparse': {'n': 80, 'E_G': 160, 'E_H': 160, 'Brazil_tight': (True, 160.0, 160.0, 0.57), 'Brazil_IP_binary': (True, 160.0, 160.0, 154.62), 'Brazil_IP': (True, 160.0, 160.0, 192.98), 'Brazil_cuts': (True, 160.0, 160.0, 204.52), 'Marenco_7_forward': (True, 160.0, 160.0, 2.23), 'Marenco_7_reversed': (True, 160.0, 160.0, 2.63)}, '90sparse': {'n': 90, 'E_G': 180, 'E_H': 180, 'Brazil_tight': (True, 180.0, 180.0, 0.75), 'Brazil_IP_binary': (True, 180.0, 180.0, 236.38), 'Brazil_IP': (True, 180.0, 180.0, 245.51), 'Brazil_cuts': (True, 180.0, 180.0, 430.11), 'Marenco_7_forward': (True, 180.0, 180.0, 3.85), 'Marenco_7_reversed': (True, 180.0, 180.0, 2.74)}, '100sparse': {'n': 100, 'E_G': 200, 'E_H': 200, 'Brazil_tight': (True, 200.0, 200.0, 1.0), 'Brazil_IP_binary': (True, 200.0, 200.0, 466.72), 'Brazil_IP': (True, 200.0, 200.0, 374.42), 'Brazil_cuts': (True, 200.0, 200.0, 160.37), 'Marenco_7_forward': (True, 200.0, 200.0, 16.08), 'Marenco_7_reversed': (True, 200.0, 200.0, 17.7)}, '10dense': {'n': 10, 'E_G': 22, 'E_H': 22, 'Brazil_tight': (True, 22.0, 22.0, 0.09), 'Brazil_IP_binary': (True, 22.0, 22.0, 0.09), 'Brazil_IP': (True, 22.0, 22.0, 0.07), 'Brazil_cuts': (True, 22.0, 22.0, 0.11), 'Marenco_7_forward': (True, 22.0, 22.0, 0.01), 'Marenco_7_reversed': (True, 22.0, 22.0, 0.01)}, '20dense': {'n': 20, 'E_G': 95, 'E_H': 95, 'Brazil_tight': (True, 95.0, 95.0, 18.78), 'Brazil_IP_binary': (True, 95.0, 95.0, 25.25), 'Brazil_IP': (True, 95.0, 95.0, 19.38), 'Brazil_cuts': (True, 95.0, 95.0, 13.01), 'Marenco_7_forward': (True, 95.0, 95.0, 0.06), 'Marenco_7_reversed': (True, 95.0, 95.0, 0.06)}, '30dense': {'n': 30, 'E_G': 217, 'E_H': 217, 'Brazil_tight': (True, 217.0, 217.0, 0.71), 'Brazil_IP_binary': (True, 217.0, 217.0, 229.1), 'Brazil_IP': (True, 217.0, 217.0, 220.43), 'Brazil_cuts': (True, 217.0, 217.0, 4.87), 'Marenco_7_forward': (True, 217.0, 217.0, 0.47), 'Marenco_7_reversed': (True, 217.0, 217.0, 0.32)}}
+tree_data = {'40tree': {'n': 40, 'E_G': 39, 'E_H': 39, 'Brazil_tight': (True, 39.0, 39.0, 0.75), 'Brazil_IP_binary': (True, 39.0, 39.0, 0.83), 'Brazil_IP': (True, 39.0, 39.0, 0.9), 'Brazil_cuts': (True, 39.0, 39.0, 0.73), 'Marenco_7_forward': (True, 39.0, 39.0, 0.06), 'Marenco_7_reversed': (True, 39.0, 39.0, 0.07)}, '70tree': {'n': 70, 'E_G': 69, 'E_H': 69, 'Brazil_tight': (True, 69.0, 69.0, 8.32), 'Brazil_IP_binary': (True, 69.0, 69.0, 6.83), 'Brazil_IP': (True, 69.0, 69.0, 6.92), 'Brazil_cuts': (True, 69.0, 69.0, 7.31), 'Marenco_7_forward': (True, 69.0, 69.0, 0.52), 'Marenco_7_reversed': (True, 69.0, 69.0, 0.34)}, '100tree': {'n': 100, 'E_G': 99, 'E_H': 99, 'Brazil_tight': (True, 99.0, 99.0, 0.29), 'Brazil_IP_binary': (True, 99.0, 99.0, 1.99), 'Brazil_IP': (True, 99.0, 99.0, 1.83), 'Brazil_cuts': (True, 99.0, 99.0, 2.93), 'Marenco_7_forward': (True, 99.0, 99.0, 2.43), 'Marenco_7_reversed': (True, 99.0, 99.0, 0.92)}, '150tree': {'n': 150, 'E_G': 149, 'E_H': 149, 'Brazil_tight': (True, 149.0, 149.0, 0.74), 'Brazil_IP_binary': (True, 149.0, 149.0, 17.57), 'Brazil_IP': (True, 149.0, 149.0, 21.37), 'Brazil_cuts': (True, 149.0, 149.0, 20.4), 'Marenco_7_forward': (True, 149.0, 149.0, 6.86), 'Marenco_7_reversed': (True, 149.0, 149.0, 4.54)}, '200tree': {'n': 200, 'E_G': 199, 'E_H': 199, 'Brazil_tight': (True, 199.0, 199.0, 1.43), 'Brazil_IP_binary': (True, 199.0, 199.0, 88.81), 'Brazil_IP': (True, 199.0, 199.0, 110.59), 'Brazil_cuts': (True, 199.0, 199.0, 10.57), 'Marenco_7_forward': (True, 199.0, 199.0, 12.82), 'Marenco_7_reversed': (True, 199.0, 199.0, 14.67)}, '300tree': {'n': 300, 'E_G': 299, 'E_H': 299, 'Brazil_tight': (True, 299.0, 299.0, 6.89), 'Brazil_IP_binary': (True, 299.0, 299.0, 18.87), 'Brazil_IP': (True, 299.0, 299.0, 20.5), 'Brazil_cuts': (True, 299.0, 299.0, 26.98), 'Marenco_7_forward': (True, 299.0, 299.0, 6.79), 'Marenco_7_reversed': (True, 299.0, 299.0, 8.24)}, '500tree': {'n': 500, 'E_G': 499, 'E_H': 499, 'Brazil_tight': (True, 499.0, 499.0, 23.11), 'Brazil_IP_binary': (True, 499.0, 499.0, 118.1), 'Brazil_IP': (True, 499.0, 499.0, 118.25), 'Brazil_cuts': (True, 499.0, 499.0, 147.72), 'Marenco_7_forward': (True, 499.0, 499.0, 31.29), 'Marenco_7_reversed': (True, 499.0, 499.0, 30.26)}}
+
+
+boris_instances = ['10sparse', '20sparse', '30sparse', '40sparse', '50sparse', '60sparse', '70sparse', '80sparse', '90sparse', '100sparse',
+		'10dense', '20dense', '30dense', #'40dense', '50dense', '60dense', '70dense', '80dense', '90dense', '100dense',
+		'40tree', '70tree', '100tree', '150tree', '200tree', '300tree', '500tree']
+
+table = {instance: {} for instance in boris_instances}
+for data in [sparse_data, tree_data]:
+	for instance in data:
+		for field in data[instance]:
+			if field in ['n', 'E_G', 'E_H']:
+				table[instance][field] = data[instance][field]
+			else:
+				is_solved, lb, ub, time = data[instance][field]
+				table[instance][field] = (is_solved, int(round(lb, 4)), int(round(ub, 4)), round(time, 2))
+
+
+table_lines = {}
+for instance in boris_instances:
+	# print (instance, table[instance])
+	best_method, best = argmin(table[instance], lambda x: 1e4 if type(x)==type(3) else (x[3]-1200 if x[0] else x[2]-x[1]) )
+	# best_result[instance] = best
+	line = instance + ' & '
+	for field in fields:
+		if field in ['n', 'E_G', 'E_H']:
+			line = line + '%d & '%table[instance][field]
+		else:
+			is_solved, lb, ub, time = table[instance][field]
+			timestr = '%.2f'%time if time < 10 else ('%.1f'%time if time < 100 else '%.0f'%time)
+			if field == best_method:
+				if is_solved:
+					line = line + '\\textbf{%s} & '%timestr
+				else:
+					line = line + '\\textbf{(%.2f\\%%)} & '%(100*(ub-lb)/lb)
+			else:
+				if is_solved:
+					line = line + '%s & '%timestr
+				else:
+					line = line + '(%.2f\\%%) & '%(100*(ub-lb)/lb)
+	table_lines[instance] = line
+
+text = ''
+for instance in boris_instances:
+	text = text + table_lines[instance][:-2] + '\\\\\n'
+print ('\n'*3 + text)
 

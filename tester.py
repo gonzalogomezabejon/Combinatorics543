@@ -40,6 +40,7 @@ if __name__=='__main__':
 	# 	'prb10', 'dc1', 'df8', 'gauss2', 'memsy3', 'memsy6', 'memsy8', 'str13', 'str7', 'str9', 'str17', 'str19', 'str15', 'str18']
 	instances = ['10sparse', '20sparse', '30sparse', '40sparse', '50sparse', '60sparse', '70sparse', '80sparse', '90sparse', '100sparse',
 		'10dense', '20dense', '30dense', '40dense', '50dense', '60dense', '70dense', '80dense', '90dense', '100dense']
+	instances = ['40tree', '70tree', '100tree', '150tree', '200tree', '300tree', '500tree']
 	instances = [instance + '.dat' for instance in instances[:30]]
 
 	data = test_solvers('instances/isomorphic/', instances, solvers)
