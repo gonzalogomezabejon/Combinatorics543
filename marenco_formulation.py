@@ -52,22 +52,29 @@ class MarencoFormulation(MCESFormulation):
         x,y = self.variables
         self.model.addConstrs()
 
-def solver_marenco_IP(g1, g2, time_limit=1200):
+def solver_marenco_IP_relaxed(g1, g2, time_limit=1200):
     marenco = MarencoFormulation(g1, g2, integer_y=True)
     return marenco.solve_model(time_limit=time_limit)
 
-def solver_marenco_IP_binary(g1, g2, time_limit=1200):
+def solver_marenco_IP(g1, g2, time_limit=1200):
     marenco = MarencoFormulation(g1, g2, integer_y=False)
     marenco.convert_vtypes_to(gp.GRB.INTEGER)
     return marenco.solve_model(time_limit=time_limit)
 
+def solver_marenco_IP_rev(g1, g2, time_limit=1200):
+    marenco = MarencoFormulation(g2, g1, integer_y=False)
+    marenco.convert_vtypes_to(gp.GRB.INTEGER)
+    return marenco.solve_model(time_limit=time_limit)
+
 def solver_ineq_7(g1, g2, time_limit=1200):
-    marenco = MarencoFormulation(g1, g2, integer_y=True)
+    marenco = MarencoFormulation(g1, g2, integer_y=False)
+    marenco.convert_vtypes_to(gp.GRB.BINARY)
     marenco.add_ineq_7()
     return marenco.solve_model(time_limit=time_limit)
 
 def solver_ineq_7_rev(g1, g2, time_limit=1200):
-    marenco = MarencoFormulation(g2, g1, integer_y=True)
+    marenco = MarencoFormulation(g2, g1, integer_y=False)
+    marenco.convert_vtypes_to(gp.GRB.BINARY)
     marenco.add_ineq_7()
     return marenco.solve_model(time_limit=time_limit)
 
@@ -82,6 +89,7 @@ if __name__ == '__main__':
     marenco = MarencoFormulation(g1, g2)
     marenco.add_ineq_7()
     # # marenco.solve_lp_relaxation()
-    marenco.solve_IP_formulation()
+    # marenco.solve_IP_formulation()
     # marenco.solve_lp_relaxation()
+    solver_marenco_IP(g1, g2)
 
