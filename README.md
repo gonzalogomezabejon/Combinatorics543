@@ -1,8 +1,8 @@
 # Maximum Common Edge Subgraph Implementation
 
-This repository hosts our implementation of the research paper The Maximum Common Edge Subgraph Problem: A Polyhedral Investigation by Bahiense et al., as our course project for Combinatorial Optimization at Rice University, Fall 2024. The project is conducted under the supervision of Dr. Illya V. Hicks.
+This repository hosts our implementation of the research paper The Maximum Common Edge Subgraph Problem: A Polyhedral Investigation by Bahiense et al., as our group course project for Combinatorial Optimization at Rice University, Fall 2024. The project is conducted under the instruction of Dr. Illya V. Hicks.
 
-## Course Members
+## Group Members
 - Gonzalo Gomez Abejon
 - Saber Dinpazhouh
 - Boris Shapoval
