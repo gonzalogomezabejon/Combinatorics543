@@ -10,8 +10,8 @@ This repository hosts our implementation of the research paper The Maximum Commo
 
 ## Repository Contents
 
-- `marenco_formulation.py`: Implements the first integer programming (IP) formulation discussed in the paper.
-- `brazil_formulation.py`: Implements the second integer programming (IP) formulation discussed in the paper.
+- `marenco_formulation.py`: Implements the first integer programming (IP) formulation discussed in the paper, referred to as the previous polyhedral study, section 2.
+- `brazil_formulation.py`: Implements the second integer programming (IP) formulation discussed in the paper, referred to as the new IP formulation, section 3.
 - `tester.py`: A utility script designed to test the two formulations with various options.
 - `instances/`: Contains two sets of test cases:
   - `Marenco/`: Benchmark test cases used in the paper.
