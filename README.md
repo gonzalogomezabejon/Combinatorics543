@@ -1,10 +1,22 @@
-This repository hosts the code associated with the research paper available [here](https://www.sciencedirect.com/science/article/pii/S0166218X12000340#:~:text=In%20the%20Maximum%20Common%20Edge,(1981)%20%5B2%5D).
+# Maximum Common Edge Subgraph Implementation
+
+This repository hosts our implementation of the research paper The Maximum Common Edge Subgraph Problem: A Polyhedral Investigation by Bahiense et al., as our course project for Combinatorial Optimization at Rice University, Fall 2024. The project is conducted under the supervision of Dr. Illya V. Hicks.
+
+## Course Members
+- Gonzalo Gomez Abejon
+- Saber Dinpazhouh
+- Boris Shapoval
+- Noah Lichtenberg
 
 ## Repository Contents
 
-- `marenco_formulation.py`: This script implements the first integer programming (IP) formulation discussed in the paper.
-- `brazil_formulation.py`: This script implements the second integer programming (IP) formulation discussed in the paper.
+- `marenco_formulation.py`: Implements the first integer programming (IP) formulation discussed in the paper.
+- `brazil_formulation.py`: Implements the second integer programming (IP) formulation discussed in the paper.
 - `tester.py`: A utility script designed to test the two formulations with various options.
-- `instances/`: This directory contains two sets of test cases:
-  - `Marenco/`: Contains the benchmark test cases used in the paper.
-  - `Isomorphic/`: Contains test cases that we generated to address the graph isomorphism problem using the MCES framework.
+- `instances/`: Contains two sets of test cases:
+  - `Marenco/`: Benchmark test cases used in the paper.
+  - `Isomorphic/`: Test cases we generated to solve the graph isomorphism problem using the MCES framework.
+
+## How to Run the Code
+- To run all test cases, execute `tester.py`.
+- To explore the project with examples, see the scripts `marenco_formulation.py` and `brazil_formulation.py`.
